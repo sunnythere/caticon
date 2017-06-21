@@ -1,0 +1,77 @@
+#site-navigation {
+	display: block;
+	width: 100%;
+	@include borders(16px, 9px);
+	margin: 0;
+	padding: 9px 0;
+}
+
+#header-menu {
+	@include center-block;
+	padding-left: 3%;
+
+	h5 {
+		display: inline-block;
+		margin: 0;
+		text-decoration: none;
+		color: $color__text-main;
+
+		// spacing between menu items, but not on the last one
+		&:not(:last-child) {
+			margin-right: 3%;
+		}
+
+		a {
+			text-decoration: none;
+
+			&:active{
+				color: $color__link2;
+			}
+		}
+	}
+
+	.current_page_item > a,
+	.current-menu-item > a,
+	.current_page_ancestor > a,
+	.current-menu-ancestor > a {
+	}
+
+}
+
+
+
+/* Small menu. */
+/*.menu-toggle,
+.main-navigation.toggled ul {
+	display: block;
+}*/
+/*
+@media screen and (min-width: 37.5em) {
+	.menu-toggle {
+		display: none;
+	}
+	.main-navigation ul {
+		display: block;
+	}
+}*/
+
+/*.comment-navigation,
+.posts-navigation,
+.post-navigation {
+
+	.site-main & {
+		margin: 0 0 1.5em;
+		overflow: hidden;
+	}
+
+	.nav-previous {
+		float: left;
+		width: 50%;
+	}
+
+	.nav-next {
+		float: right;
+		text-align: right;
+		width: 50%;
+	}
+}*/

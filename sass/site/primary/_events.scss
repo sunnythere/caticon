@@ -1,0 +1,45 @@
+/*events*/
+
+#intro, .event-entry {
+  @include borders(16px, 9px);
+}
+
+#intro {
+  margin: 30px 0;
+
+  p {
+    margin: 0;
+    padding: 0 2%;
+    text-align: center;
+  }
+}
+
+.event-header {
+  p {
+    margin: 0 3%;
+  }
+}
+
+.event-datetime {
+
+}
+
+.event-title {
+  margin: 0;
+}
+
+.event-content {
+  p {
+    margin: 0 3%;
+  }
+}
+
+.event-img {
+  img {
+    @include borders(0, 0);
+  }
+}
+
+.event-img-empty {
+  @include font-size(0.5);
+}

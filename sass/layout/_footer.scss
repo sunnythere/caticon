@@ -1,0 +1,45 @@
+.site-info {
+  @include borders(16px, 9px)
+}
+
+#footer-menu {
+  display: inline-block;
+
+  width: 29%;
+
+  ul {
+    margin: 0 5%;
+    padding: 0;
+
+    li {
+      list-style: none;
+
+      a {
+        font-family: $font__sans;
+        @include font-size(0.875);
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+#footer-address {
+  display: inline-block;
+  width: 39%;
+  font-family: $font__sans;
+  @include font-size(0.875);
+  text-decoration: none;
+  text-align: center;
+  vertical-align: super;
+
+  #address {
+    @include font-size(0.75)
+  }
+}
+
+#footer-social {
+  display: inline-block;
+  width: 29%;
+}
+
+
