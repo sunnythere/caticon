@@ -14,12 +14,25 @@ get_header(); ?>
   <div id="primary" class="content-area">
     <main id="main" class="site-main" role="main">
 
-    <h6>Upcoming Events...</h6>
+    <!-- <h6>Upcoming Events...</h6> -->
     <?php
+      $today = date('Y-m-d');
       $args = array(
-        'post_type' => 'event',
+        'post_type' => 'caticon_event',
         'posts_per_page' => 5,
-        'order' => 'ASC' );
+        'orderby' => 'meta_value',
+        'meta_key' => 'caticon_event_date',
+        'meta_type' => 'DATE',
+        'order' => 'ASC',
+        'meta_query' => array(
+            array(
+                  'key' => 'caticon_event_date',
+                  'value' =>  $today,
+                  'compare' => '>=',
+                  'type' => 'DATE',
+            )
+        )
+      );
       $loop = new WP_Query( $args );
 
       /* LOOOOOOOOP */

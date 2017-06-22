@@ -1,3 +1,5 @@
+
+
 #site-navigation {
 	display: block;
 	width: 100%;
@@ -6,11 +8,31 @@
 	padding: 9px 0;
 }
 
-#header-menu {
+
+#sticky-header {
+	position: relative;
+	top: -200px;
+
+	@media screen and (min-width: $media_small) {
+    	display: none;
+  }
+}
+
+.primary-menu {
+	display: flex;
 	@include center-block;
 	padding-left: 3%;
 
-	h5 {
+	ul {
+		justify-content: flex-end;
+		flex-direction: row;
+		flex-wrap: wrap;
+
+		li {
+			list-style: none;
+		}
+	}
+/*	h5 {
 		display: inline-block;
 		margin: 0;
 		text-decoration: none;
@@ -19,16 +41,16 @@
 		// spacing between menu items, but not on the last one
 		&:not(:last-child) {
 			margin-right: 3%;
-		}
+		}*/
 
-		a {
+/*		a {
 			text-decoration: none;
 
 			&:active{
 				color: $color__link2;
 			}
 		}
-	}
+	}*/
 
 	.current_page_item > a,
 	.current-menu-item > a,

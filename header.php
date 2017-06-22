@@ -31,12 +31,22 @@
 				endif; ?>
 			</div><!-- .site-branding -->
 
-			<nav id="site-navigation" role="navigation">
-				<div id="header-menu">
+			<nav id="site-navigation" class="main-navigation" role="navigation">
+				<div id="sticky-header">
+					<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Header Menu', 'caticon' ); ?></button>
+				</div>
+			<?php
+				wp_nav_menu( array(
+					'theme_location' => 'header_menu',
+					'menu_id'        => 'primary-menu',
+					//appended to div that wraps menu element
+				) );
+			?>
+<!-- 				<div id="header-menu">
 						<h5><a href="">About</a></h5>
 						<h5><a href="">Schedule</a></h5>
 						<h5><a href="">Sponsors</a></h5>
-				</div>
+				</div> -->
 			</nav><!-- #site-navigation -->
 		</header><!-- #masthead -->
 

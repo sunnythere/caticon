@@ -40,8 +40,7 @@ function caticon_setup() {
 
   // This theme uses wp_nav_menu() in one location.
   register_nav_menus( array(
-    'header-menu' => esc_html__( 'Header Menu', 'caticon'),
-    'footer-menu' => esc_html__( 'Footer Menu', 'caticon')
+    'header_menu' => esc_html__( 'Header Menu', 'caticon'),
   ) );
 
   /*
@@ -84,98 +83,43 @@ add_action( 'after_setup_theme', 'caticon_content_width', 0 );
 
 
 /**
- * Register custom 'event' post type
+ * Register custom 'caticon_event' post type
  */
 
-function caticon_create_event_cpt() {
-  $args = array(
-    'label'         => 'Events',
-      //plural descriptive
-    'description'   => 'a caticon event',
-    'public'        => true,
-      // exclude_from_search: opp
-      // publicly_queryable: same
-      // show_in_nav_menus: same
-      // show_ui: same
-        // show_in_menu: show_ui ? same
-          //show_in_admin_bar: same
-    'menu_position' => 5, //below Posts
-    'menu_icon'     => 'dashicons-tickets-alt',
-    //'register_meta_box_cb'  => 'custom_event_metaboxes',
-    'supports'      => array( 'title', 'editor', 'page-attributes', 'thumbnail', 'custom-fields'),
-    'taxonomies'    => array( 'age', 'cost', 'post_tag', 'post_format' ),
-    'has_archive'   => true,
-    'delete_with_user' => false
-    );
-  register_post_type( 'event', $args );
-}
-add_action( 'init', 'caticon_create_event_cpt' );
 
-// function custom_event_metaboxes($post) {
-//  add_meta_box('event-date', 'Event Date', 'event_date_meta_cb', 'event')
-// }
-// add_action('add_meta_boxes', 'custom_event_metaboxes')
 
-// function event_date_meta_cb($meta_id) {
-//  $outline = '<label for="event-date" style="width:150px; display:inline-block;">'. 'Event Date' .'</label>';
-//   $title_field = get_post_meta( $meta_id->ID, 'title_field', true );
-//   $outline .= '<input type="text" name="event-date"  class="event-date-mb" value="'. esc_attr($title_field) .'" style="width:300px;"/>';
 
-//     echo $outline;
-// }
+
 
 /**
  * Register 'event' post taxonomies
  */
 
-function caticon_reg_event_tax() {
+// function caticon_reg_event_tax() {
 
-  register_taxonomy(
-    'age',
-    'event',
-    array(
-      'labels'  => array(
-        'name'  =>  __('Age Range', 'taxonomy general name'),
-         'singular_name' => __('Age Range', 'taxonomy singular name'),
-         'search_items'   => __('Search Age Ranges'),
-         'all_items'      => __('All Age Range Categories'),
-         'edit_item'      => __('Edit Age Range'),
-         'update_item'    => __('Update Age Range'),
-         'add_new_item'   => __('Add New Age Range Category'),
-         'new_item_name'  => __('New Age Range'),
-         'menu_item'      => __('Age Range')
-       ),
-      'public'      => true,
-      'rewrite'     => array('slug' => 'age')
-    )
-  );
-}
-add_action( 'init', 'caticon_reg_event_tax' );
+//   register_taxonomy(
+//     'age',
+//     'caticon_event',
+//     array(
+//       'labels'  => array(
+//         'name'  =>  __('Age Range', 'taxonomy general name'),
+//          'singular_name' => __('Age Range', 'taxonomy singular name'),
+//          'search_items'   => __('Search Age Ranges'),
+//          'all_items'      => __('All Age Range Categories'),
+//          'edit_item'      => __('Edit Age Range'),
+//          'update_item'    => __('Update Age Range'),
+//          'add_new_item'   => __('Add New Age Range Category'),
+//          'new_item_name'  => __('New Age Range'),
+//          'menu_item'      => __('Age Range')
+//        ),
+//       'public'      => true,
+//       'rewrite'     => array('slug' => 'age')
+//     )
+//   );
+// }
+// add_action( 'init', 'caticon_reg_event_tax' );
 
 
-function caticon_reg_event_tax1() {
-
-  register_taxonomy(
-    'cost',
-    'event',
-    array(
-      'labels'  => array(
-        'name'  =>  __('Cost', 'taxonomy general name'),
-         'singular_name' => __('Cost', 'taxonomy singular name'),
-         'search_items'   => __('Search Cost Categories'),
-         'all_items'      => __('All Cost Categories'),
-         'edit_item'      => __('Edit Cost Category'),
-         'update_item'    => __('Update Cost Category'),
-         'add_new_item'   => __('Add New Cost Category'),
-         'new_item_name'  => __('New Cost Category'),
-         'menu_item'      => __('Cost Category')
-       ),
-      'public'      => true,
-      'rewrite'     => array('slug' => 'cost')
-    )
-  );
-}
-add_action( 'init', 'caticon_reg_event_tax1' );
 
 
 
@@ -233,6 +177,8 @@ function caticon_scripts() {
   wp_enqueue_script( 'caticon-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
 
   wp_enqueue_script( 'caticon-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
+
+  wp_enqueue_script( 'sticky', get_template_directory_uri() . '/js/sticky.js', array());
 
   if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
     wp_enqueue_script( 'comment-reply' );

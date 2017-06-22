@@ -1,10 +1,9 @@
 .site-info {
-  @include borders(16px, 9px)
+  @include borders(16px, 9px);
+  display: flex;
 }
 
 #footer-menu {
-  display: inline-block;
-
   width: 29%;
 
   ul {
@@ -24,21 +23,19 @@
 }
 
 #footer-address {
-  display: inline-block;
   width: 39%;
   font-family: $font__sans;
   @include font-size(0.875);
   text-decoration: none;
   text-align: center;
-  vertical-align: super;
+  flex: 1 0 auto;
 
   #address {
-    @include font-size(0.75)
+    @include font-size(0.75);
   }
 }
 
 #footer-social {
-  display: inline-block;
   width: 29%;
 }
 

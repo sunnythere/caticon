@@ -10,15 +10,35 @@
 <article id="post-<?php the_ID(); ?>" class="event-entry">
   <header class="event-header">
     <?php
-    //datetime
+
+    $date = get_post_meta( $post->ID, 'caticon_event_date', true );
+    $start_time = get_post_meta( $post->ID, 'caticon_event_start', true );
+    $end_time = get_post_meta( $post->ID, 'caticon_event_end', true );
+    $date_time = '';
+
+    if ( ! empty( $date ) ) {
+      $date_time = $date_time .'<h6 class="event-datetime">' . $date . '&nbsp; <img src="' . get_theme_file_uri() . '/img/smallcat.min.svg" /> &nbsp;';
+      if ( ! empty( $start_time) ) {
+        $date_time = $date_time  . $start_time;
+      }
+      if ( ! empty( $end_time ) ) :
+        $date_time = $date_time . ' – ' . $end_time . '</h6>';
+      else :
+        $date_time = $date_time . '</h6>';
+      endif;
+      echo $date_time;
+    };
+    //list all meta data, for testing:
+    //the_meta();
 
     if ( is_single() ) :
       the_title( '<h1 class="event-title">', '</h1>' );
     else :
       // the_title( '<h3 class="event-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h3>' );
-      the_title( '<p class="event-title">', '</p>' );
+      the_title( '<p class="event-title"><big>', '</big></p>' );
 
       if ( taxonomy_exists('age') ) {
+        //get_the_term_list()
         $age_terms = get_the_terms( $post->ID, 'age');
         if (! empty( $age_terms) && ! is_wp_error( $age_terms )) {
           foreach ($age_terms as $age) {
