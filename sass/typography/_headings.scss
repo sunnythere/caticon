@@ -29,3 +29,17 @@ h5 {
 h6 {
   font-size: 1.1em;
 }
+
+.subheading {
+  background-color: $color__orangey;
+  padding: 1.5% 2%;
+  h6 {
+    font-family: $font__serif;
+    color: white;
+  }
+}
+
+.more-link {
+  text-align: right;
+  padding: 1%;
+}

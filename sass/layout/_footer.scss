@@ -1,10 +1,11 @@
 .site-info {
   @include borders(16px, 9px);
-  display: flex;
+
 }
 
 #footer-menu {
-  width: 29%;
+  width: 27%;
+  display: inline-block;
 
   ul {
     margin: 0 5%;
@@ -15,7 +16,7 @@
 
       a {
         font-family: $font__sans;
-        @include font-size(0.875);
+        font-size: 0.9em;
         text-decoration: none;
       }
     }
@@ -23,20 +24,23 @@
 }
 
 #footer-address {
-  width: 39%;
+  width: 42%;
+  display: inline-block;
   font-family: $font__sans;
-  @include font-size(0.875);
+  font-size: 1em;
   text-decoration: none;
   text-align: center;
   flex: 1 0 auto;
+  vertical-align: super;
 
   #address {
-    @include font-size(0.75);
+    font-size: 0.85em;
   }
 }
 
 #footer-social {
-  width: 29%;
+  width: 27%;
+  display: inline-block;
 }
 
 

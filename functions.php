@@ -83,47 +83,6 @@ add_action( 'after_setup_theme', 'caticon_content_width', 0 );
 
 
 /**
- * Register custom 'caticon_event' post type
- */
-
-
-
-
-
-
-/**
- * Register 'event' post taxonomies
- */
-
-// function caticon_reg_event_tax() {
-
-//   register_taxonomy(
-//     'age',
-//     'caticon_event',
-//     array(
-//       'labels'  => array(
-//         'name'  =>  __('Age Range', 'taxonomy general name'),
-//          'singular_name' => __('Age Range', 'taxonomy singular name'),
-//          'search_items'   => __('Search Age Ranges'),
-//          'all_items'      => __('All Age Range Categories'),
-//          'edit_item'      => __('Edit Age Range'),
-//          'update_item'    => __('Update Age Range'),
-//          'add_new_item'   => __('Add New Age Range Category'),
-//          'new_item_name'  => __('New Age Range'),
-//          'menu_item'      => __('Age Range')
-//        ),
-//       'public'      => true,
-//       'rewrite'     => array('slug' => 'age')
-//     )
-//   );
-// }
-// add_action( 'init', 'caticon_reg_event_tax' );
-
-
-
-
-
-/**
  * Register widget area.
  *
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
@@ -140,6 +99,15 @@ function caticon_widgets_init() {
   ) );
 }
 add_action( 'widgets_init', 'caticon_widgets_init' );
+
+
+function caticon_format_menu() {
+
+  include 'nav-walker.php';
+
+}
+add_action('wp_loaded', 'caticon_format_menu');
+
 
 
 /**
@@ -178,7 +146,7 @@ function caticon_scripts() {
 
   wp_enqueue_script( 'caticon-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
 
-  wp_enqueue_script( 'sticky', get_template_directory_uri() . '/js/sticky.js', array());
+  wp_enqueue_script( 'sticky', get_template_directory_uri() . '/js/sticky.js', array(), 1.0, true );
 
   if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
     wp_enqueue_script( 'comment-reply' );
@@ -197,6 +165,10 @@ function caticon_pingback_header() {
   }
 }
 add_action( 'wp_head', 'caticon_pingback_header' );
+
+
+
+
 
 /**
  * Implement the Custom Header feature.

@@ -1,0 +1,73 @@
+#bubble {
+  margin-top: 4em;
+}
+
+.bubble-text > span > p {
+  font-family: $font__bubble;
+  @include font-size(0.55);
+}
+
+
+.bubble-img {
+  max-width: 150px;
+  max-height: 150px;
+  display: inline-block;
+  position: relative;
+  left: -10px;
+  top: 0;
+
+  img {
+    @include borders2(3px);
+  }
+}
+
+.bubble-text {
+  background-image: url('img/speechbubble.svg');
+  background-repeat: no-repeat;
+  width: 148px;
+  height: 102px;
+  display: inline-block;
+  float: left;
+  text-align: center;
+
+  &::before{
+    content: '';
+    height: 100%;
+    width: 48%;
+    float: left;
+      /*left side*/
+    shape-outside: polygon(
+      0 0, 100% 0,
+            60% 5%,
+            40% 10%,
+            20% 20%,
+            10% 30%,
+            8% 48%,
+            10% 65%,
+            20% 75%,
+            40% 85%,
+            60% 90%,
+            100% 95%, 0% 95%);
+  }
+
+  > span::before{
+    content: ' ';
+    height: 100%;
+    width: 48%;
+    float: right;
+      /*right side*/
+    shape-outside: polygon(
+      100% 0, 0 0,
+              10% 5%,
+              30% 10%,
+              50% 20%,
+              62% 30%,
+              70% 48%,
+              62% 65%,
+              50% 75%,
+              30% 85%,
+              10% 90%,
+              0 95%, 100% 95%
+    );
+  }
+}

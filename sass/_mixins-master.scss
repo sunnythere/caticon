@@ -24,6 +24,12 @@
 }
 
 
+//borders
+@mixin borders-lr {
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+}
+
 @mixin borders($margin_topbottom, $padding_topbottom) {
   margin-top: $margin_topbottom;
   margin-bottom: $margin_topbottom;
@@ -32,4 +38,12 @@
   border-top: 2px solid black;
   border-bottom: 2px solid black;
   background-color: white;
+
+  @media and screens and (min-width: $media_medium) {
+    @include borders-lr;
+  }
+}
+
+@mixin borders2($widthpx) {
+  border: $widthpx solid black;
 }

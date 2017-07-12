@@ -4,14 +4,17 @@
 @import "../layout/header";
 
 @import "../layout/footer";
-/*--------------------------------------------------------------
-## Posts and pages
---------------------------------------------------------------*/
+
+
+
 @import "primary/posts-and-pages";
 
-/*--------------------------------------------------------------
-## Comments
---------------------------------------------------------------*/
-@import "primary/comments";
+
 
 @import "primary/events";
+
+@import "primary/bubble";
+
+
+
+@import "primary/comments";

@@ -1,38 +1,38 @@
 /*events*/
 
-#intro, .event-entry {
-  @include borders(16px, 9px);
-}
-
 #intro {
-  margin: 30px 0;
+  width: 100%;
+  @include borders(30px, 9px);
 
   p {
     margin: 0;
     padding: 0 2%;
     text-align: center;
   }
-}
 
-.event-header {
-  margin: 0 3%;
-
-  p {
-    margin: 0;
+  @media screen and (min-width: $media_medium) {
+    border: 2px solid black;
   }
 }
 
-.event-title {
+
+.event-header,
+.event-content > p {
+  margin: 0 3% 0 5% ;
+}
+
+.event-content > ul {
+  margin-right: 3%;
+}
+
+.event-title,
+.event-header > p{
   margin: 0;
 }
 
-.event-content {
-  p {
-    margin: 0 3%;
-  }
-}
-
 .event-img {
+  margin-top: 2%;
+  margin-bottom: 1%;
   img {
     @include borders(0, 0);
   }
@@ -40,4 +40,9 @@
 
 .event-img-empty {
   @include font-size(0.5);
+}
+
+
+.event-entry-single {
+  @include borders-lr;
 }

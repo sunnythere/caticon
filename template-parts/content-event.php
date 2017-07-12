@@ -5,29 +5,42 @@
  * @package caticon
  */
 
+if ( is_single() ) :
+  $article_class = "event-entry-single";
+else:
+  $article_class = "event-entry";
+endif;
+
+echo '<article id="post-', the_ID(), '" class="', $article_class, '">';
 ?>
 
-<article id="post-<?php the_ID(); ?>" class="event-entry">
   <header class="event-header">
     <?php
 
     $date = get_post_meta( $post->ID, 'caticon_event_date', true );
     $start_time = get_post_meta( $post->ID, 'caticon_event_start', true );
     $end_time = get_post_meta( $post->ID, 'caticon_event_end', true );
-    $date_time = '';
 
     if ( ! empty( $date ) ) {
-      $date_time = $date_time .'<h6 class="event-datetime">' . $date . '&nbsp; <img src="' . get_theme_file_uri() . '/img/smallcat.min.svg" /> &nbsp;';
+      $the_date = mysql2date( 'l, F j, Y', $date );
+      $date_time = '<h6 class="event-datetime">' . $the_date . '&nbsp; <img src="' . get_theme_file_uri() . '/img/smallcat.min.svg" /> &nbsp;';
+
       if ( ! empty( $start_time) ) {
-        $date_time = $date_time  . $start_time;
+        $the_start_time = mysql2date('g:i a', $start_time);
+        $date_time = $date_time  . $the_start_time;
       }
+
       if ( ! empty( $end_time ) ) :
-        $date_time = $date_time . ' – ' . $end_time . '</h6>';
+        $the_end_time = mysql2date('g:i a', $end_time );
+        $date_time = $date_time . ' – ' /*this is an en-dash, (option + hyphen)*/ . $the_end_time . '</h6>';
       else :
         $date_time = $date_time . '</h6>';
       endif;
+
       echo $date_time;
+
     };
+
     //list all meta data, for testing:
     //the_meta();
 
@@ -35,7 +48,7 @@
       the_title( '<h1 class="event-title">', '</h1>' );
     else :
       // the_title( '<h3 class="event-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h3>' );
-      the_title( '<p class="event-title"><big>', '</big></p>' );
+      the_title( '<p class="event-title"><big><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></big></p>' );
 
       if ( taxonomy_exists('age') ) {
         //get_the_term_list()
@@ -85,13 +98,8 @@
       //)
        );
 
-      wp_link_pages( array(
-        'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'caticon' ),
-        'after'  => '</div>',
-      ) );
-
-
     ?>
+
   </div><!-- .entry-content -->
 
 
