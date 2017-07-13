@@ -1,21 +1,36 @@
 .site-info {
   @include borders(16px, 9px);
+  padding: 1% 2%;
+  display: flex;
 
+  @media and screen and (min-width: $media_small) {
+    padding: 1% 4%;
+  }
 }
 
-#footer-menu {
-  width: 27%;
+#footer-menu,
+#footer-address,
+#footer-social {
   display: inline-block;
+  flex: auto;
+  font-family: $font__sans;
+}
 
+
+#footer-menu {
+
+  width: 27%;
+  margin-left: auto;
+  margin-right: auto;
   ul {
     margin: 0 5%;
     padding: 0;
 
     li {
       list-style: none;
+      padding-left: 3%;
 
       a {
-        font-family: $font__sans;
         font-size: 0.9em;
         text-decoration: none;
       }
@@ -24,23 +39,26 @@
 }
 
 #footer-address {
+  flex: 1 0 auto;
+  vertical-align: super;
+
   width: 42%;
-  display: inline-block;
   font-family: $font__sans;
   font-size: 1em;
   text-decoration: none;
   text-align: center;
-  flex: 1 0 auto;
-  vertical-align: super;
 
-  #address {
+
+  #address, .contact-tag {
     font-size: 0.85em;
   }
 }
 
 #footer-social {
   width: 27%;
-  display: inline-block;
+  align-self: center;
+  text-align: right;
+  padding-right: 1%;
+  font-size: 0.9em;
 }
-
 

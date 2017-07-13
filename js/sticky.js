@@ -18,7 +18,7 @@
 
   function menuDisappear(evt) {
     if ( window.innerWidth <= 768 && (evt.target.body.scrollTop < 90 || (!evt.target.body.scrollTop && evt.target.documentElement.scrollTop === 0 ))) {
-        header.style.top = '-4em'
+        header.style.top = '-5em'
         // header.style.position = 'absolute'
     }
   }

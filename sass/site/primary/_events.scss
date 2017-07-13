@@ -2,7 +2,7 @@
 
 #intro {
   width: 100%;
-  @include borders(30px, 9px);
+  @include borders(20px, 9px);
 
   p {
     margin: 0;
@@ -10,7 +10,7 @@
     text-align: center;
   }
 
-  @media screen and (min-width: $media_medium) {
+  @media screen and (min-width: 640px) {
     border: 2px solid black;
   }
 }

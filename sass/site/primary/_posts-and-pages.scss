@@ -19,7 +19,7 @@
 .page-content,
 .entry-content,
 .entry-summary {
-	margin: 1.5em 0 0;
+	margin: 0.5em 0 0;
 }
 
 .page-links {
@@ -27,6 +27,6 @@
 	margin: 0 0 1.5em;
 }
 
-/*.page {
-  margin
-}*/
+article.page {
+  padding: 3%;
+}

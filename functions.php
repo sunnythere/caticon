@@ -101,15 +101,6 @@ function caticon_widgets_init() {
 add_action( 'widgets_init', 'caticon_widgets_init' );
 
 
-function caticon_format_menu() {
-
-  include 'nav-walker.php';
-
-}
-add_action('wp_loaded', 'caticon_format_menu');
-
-
-
 /**
  * preconnect for Google fonts
  */

@@ -24,25 +24,47 @@
 		<header id="masthead" class="site-header" role="banner">
 			<div class="site-branding">
 
-					<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">Allan's logo here</a></h1>
+					<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">Allan's logo <br/>here</a></h1>
 
 			</div><!-- .site-branding -->
 
 			<nav id="site-navigation" class="main-navigation" role="navigation">
+
+				<?php
+					$items = array(
+			      'About' => 'about',
+			      'Schedule' => 'events',
+			      'Sponsors' => 'sponsors'
+			    );
+					$menu_main = array( $items, 'h5' );
+					$menu_small = array( $items, 'p' );
+
+					$menu_print = function($menu_arr, $tag_size) {
+						$result = '<ul>';
+						foreach ($menu_arr as $item=>$item_value) {
+							$result = $result . '<li><' . $tag_size . '><a href="/' . $item_value . '">' . $item . '</a></' . $tag_size . '></li>';
+						}
+						$result = $result . '</ul>';
+						print($result);
+					}
+				?>
+
 				<div id="sticky-header">
 					<span id="sticky-title"><h4><?php bloginfo( 'name' ); ?></h4></span>
-					<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"></button>
+					<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
+						<?php $menu_print($items, 'p'); ?>
+					</button>
 				</div>
-			<?php
-				wp_nav_menu( array(
-//					'menu'	=> 'primary'
-					'theme_location' => 'header_menu',
-					'walker'	=> new Caticon_Walker_Nav(),
-					//'menu_id'        => 'primary-menu',
-					//appended to div that wraps menu element
-				) );
-			?>
+				<!-- no walker, what -->
+				<div class="menu-main-container">
+					<?php $menu_print($items, 'h5'); ?>
+				</div>
+
+
 			</nav><!-- #site-navigation -->
+
+			<div id="presentedBy"><a href="http://catcafebk.com" target="_blank"><img src="<?php echo get_theme_file_uri() . '/img/presentedby.svg'; ?>" /></a>
+			</div>
 		</header><!-- #masthead -->
 
 		<span id="shards"><img src="<?php echo get_theme_file_uri() . '/img/shards.svg'; ?>" /></span>
